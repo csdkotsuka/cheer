@@ -480,7 +480,10 @@ export const PeriodicSummaryReportModal: React.FC<PeriodicSummaryReportModalProp
 
           {/* Footer note */}
           <div className="mt-2 pt-1.5 border-t border-slate-200 text-center text-[8px] text-slate-400 flex items-center justify-between">
-            <span>Powered by Cheer Partner SaaS • https://cheer.app</span>
+            <span className="flex items-center gap-1.5">
+              <img src="/cheer_icon.png" alt="Cheer" className="w-3.5 h-3.5 rounded object-cover" />
+              <span>Powered by Cheer Partner SaaS • https://cheer.app</span>
+            </span>
             <span>カルテ共有・提出用サマリー ID: REP-{customer.id}</span>
           </div>
         </div>

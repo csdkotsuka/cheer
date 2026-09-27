@@ -1,0 +1,28 @@
+{
+  "name": "Cheer ✨ 毎日に寄り添うパートナー＆セルフケアダイアリー",
+  "short_name": "Cheer",
+  "description": "推し活・健康・学習など毎日の記録に寄り添うパートナーアプリ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF5F6",
+  "theme_color": "#EC4899",
+  "icons": [
+    {
+      "src": "/cheer_icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/cheer_icon_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/cheer_icon.png",
+      "sizes": "1408x1362",
+      "type": "image/png"
+    }
+  ]
+}

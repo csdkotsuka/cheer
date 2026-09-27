@@ -6,26 +6,43 @@ import {
   Zap,
   Smartphone,
   Sparkles,
+  ArrowLeft,
 } from 'lucide-react';
 
 interface MyLoungeGuidePageProps {
   onBackToApp?: () => void;
 }
 
-export const MyLoungeGuidePage: React.FC<MyLoungeGuidePageProps> = () => {
+export const MyLoungeGuidePage: React.FC<MyLoungeGuidePageProps> = ({ onBackToApp }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FFF5F7] via-[#FFF9FA] to-[#F2F6FC] text-slate-800 font-sans pb-24">
       {/* Top sticky nav */}
       <header className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-pink-100 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-xs">
-        <div className="flex items-center gap-2">
-          <span className="text-xl">💎</span>
-          <span className="font-extrabold text-lg bg-gradient-to-r from-pink-500 to-indigo-500 bg-clip-text text-transparent">
-            My Lounge
-          </span>
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-700 font-bold border border-pink-200">
-            メンバー向け使い方ガイド
-          </span>
+        <div className="flex items-center gap-2.5">
+          <img
+            src="/cheer_icon.png"
+            alt="Cheer"
+            className="w-8 h-8 rounded-xl object-cover shadow-sm border border-pink-200"
+          />
+          <div className="flex items-center gap-2">
+            <span className="font-extrabold text-lg bg-gradient-to-r from-pink-500 to-indigo-500 bg-clip-text text-transparent">
+              My Lounge
+            </span>
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-700 font-bold border border-pink-200">
+              メンバー向け使い方ガイド
+            </span>
+          </div>
         </div>
+
+        {onBackToApp && (
+          <button
+            onClick={onBackToApp}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold shadow-sm hover:bg-slate-800 transition-all cursor-pointer"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>アプリに戻る</span>
+          </button>
+        )}
       </header>
 
       {/* Hero Section */}
@@ -342,6 +359,20 @@ export const MyLoungeGuidePage: React.FC<MyLoungeGuidePageProps> = () => {
           <p className="text-xs text-slate-500 max-w-lg mx-auto">
             ブラウザのアドレスバーが消えて全画面表示に！毎朝・毎晩ワンタップで瞬時に起動できます。
           </p>
+
+          <div className="pt-2 flex items-center justify-center">
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-2xl bg-white border border-pink-200 shadow-sm">
+              <img
+                src="/cheer_icon.png"
+                alt="Cheer"
+                className="w-10 h-10 rounded-xl object-cover shadow-xs border border-pink-100"
+              />
+              <div className="text-left">
+                <span className="text-xs font-black text-slate-800 block">Cheer</span>
+                <span className="text-[10px] text-pink-600 font-bold block">ホーム画面に配置されるアプリアイコン</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

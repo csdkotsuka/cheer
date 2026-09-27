@@ -206,8 +206,8 @@ export const LoginModal: React.FC<LoginModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-100 pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 via-purple-500 to-indigo-600 text-white flex items-center justify-center text-2xl font-black shadow-md">
-              ✨
+            <div className="w-12 h-12 rounded-2xl overflow-hidden shadow-md border border-slate-200 flex-shrink-0 bg-white p-0.5">
+              <img src="/cheer_icon.png" alt="Cheer" className="w-full h-full object-cover rounded-xl" />
             </div>
             <div>
               <h2 className="text-xl font-extrabold text-slate-800 flex items-center gap-1.5">

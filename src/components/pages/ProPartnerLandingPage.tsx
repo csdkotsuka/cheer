@@ -25,14 +25,20 @@ export const ProPartnerLandingPage: React.FC<ProPartnerLandingPageProps> = ({
     <div className="min-h-screen bg-gradient-to-br from-[#FFF8FA] via-[#F8FAFC] to-[#F0FDF4] text-slate-800 font-sans pb-24">
       {/* Top sticky nav */}
       <header className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-pink-100 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-xs">
-        <div className="flex items-center gap-2">
-          <span className="text-xl">✨</span>
-          <span className="font-extrabold text-lg bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 bg-clip-text text-transparent">
-            Cheer Pro Partner
-          </span>
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold border border-amber-200">
-            事業者・専門職向けPR
-          </span>
+        <div className="flex items-center gap-2.5">
+          <img
+            src="/cheer_icon.png"
+            alt="Cheer"
+            className="w-8 h-8 rounded-xl object-cover shadow-sm border border-amber-200"
+          />
+          <div className="flex items-center gap-2">
+            <span className="font-extrabold text-lg bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600 bg-clip-text text-transparent">
+              Cheer Pro Partner
+            </span>
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold border border-amber-200">
+              事業者・専門職向けPR
+            </span>
+          </div>
         </div>
 
         <button
@@ -46,6 +52,16 @@ export const ProPartnerLandingPage: React.FC<ProPartnerLandingPageProps> = ({
 
       {/* Hero Section */}
       <section className="max-w-5xl mx-auto px-4 pt-10 sm:pt-16 pb-10 text-center space-y-5">
+        <div className="flex justify-center mb-1">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl p-1 bg-gradient-to-tr from-pink-400 via-purple-400 to-indigo-400 shadow-xl">
+            <img
+              src="/cheer_icon.png"
+              alt="Cheer Logo"
+              className="w-full h-full rounded-2xl object-cover bg-white"
+            />
+          </div>
+        </div>
+
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-200 text-pink-700 text-xs font-bold">
           <Sparkles className="w-4 h-4 text-pink-500 animate-spin" />
           <span>推し活・フィットネス・教育・仲間・セルフケアのための伴走プラットフォーム</span>
@@ -640,7 +656,12 @@ export const ProPartnerLandingPage: React.FC<ProPartnerLandingPageProps> = ({
 
       {/* Bottom CTA */}
       <section className="max-w-3xl mx-auto px-4 pt-6 text-center space-y-4">
-        <div className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 rounded-3xl p-8 text-white space-y-3 shadow-lg">
+        <div className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 rounded-3xl p-8 text-white space-y-4 shadow-lg flex flex-col items-center">
+          <img
+            src="/cheer_icon.png"
+            alt="Cheer"
+            className="w-12 h-12 rounded-2xl object-cover border-2 border-white/40 shadow-md"
+          />
           <h3 className="text-xl sm:text-2xl font-black">
             あなたの顧客を、毎日もっと元気に。
           </h3>

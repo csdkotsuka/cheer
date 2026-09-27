@@ -237,17 +237,24 @@ export const AdminPlatformView: React.FC<AdminPlatformViewProps> = ({
       <div className="glass-card rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white relative overflow-hidden shadow-2xl border border-indigo-500/30">
         <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold mb-3">
-              <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Platform Super Admin (Cheer Master: kotsuka@creativesd.net)</span>
+          <div className="flex items-start sm:items-center gap-4">
+            <img
+              src="/cheer_icon.png"
+              alt="Cheer Master"
+              className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-xl border-2 border-indigo-400/40 shrink-0 bg-white"
+            />
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold mb-2">
+                <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" />
+                <span>Platform Super Admin (Cheer Master: kotsuka@creativesd.net)</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                多業界対応 汎用SaaS基盤 管理コンソール
+              </h1>
+              <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
+                推し活・パーソナルジム・教育スクール・サークル・医療など、各提携業者（テナント）の発行とID紐付け、利用状況を統合管理します。
+              </p>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-              多業界対応 汎用SaaS基盤 管理コンソール
-            </h1>
-            <p className="text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
-              推し活・パーソナルジム・教育スクール・サークル・医療など、各提携業者（テナント）の発行とID紐付け、利用状況を統合管理します。
-            </p>
           </div>
 
           <button

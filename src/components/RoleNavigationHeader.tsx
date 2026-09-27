@@ -45,6 +45,11 @@ export const RoleNavigationHeader: React.FC<RoleNavigationHeaderProps> = ({
         <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2 flex items-center justify-between gap-2">
           {/* Left: App Logo & User space name */}
           <div className="flex items-center gap-2">
+            <img
+              src="/cheer_icon.png"
+              alt="Cheer"
+              className="w-5 h-5 rounded-md object-cover shadow-xs border border-white/20"
+            />
             <span className="font-extrabold tracking-tight bg-gradient-to-r from-pink-400 to-indigo-300 bg-clip-text text-transparent">
               Cheer
             </span>
@@ -100,8 +105,21 @@ export const RoleNavigationHeader: React.FC<RoleNavigationHeaderProps> = ({
     <div className="w-full bg-slate-900 text-white border-b border-slate-800 shadow-md sticky top-0 z-50 transition-all text-xs no-print">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2 flex flex-col md:flex-row items-center justify-between gap-3">
         
-        {/* Left: STUDIO切替 Framed Container enclosing 3 Mode Buttons with Clear Boundaries */}
-        <div className="flex items-stretch border border-slate-700 rounded-xl overflow-hidden bg-slate-950/80 shadow-sm">
+        {/* Left: App Brand & STUDIO切替 */}
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <img
+              src="/cheer_icon.png"
+              alt="Cheer"
+              className="w-5 h-5 rounded-md object-cover shadow-xs border border-white/20"
+            />
+            <span className="font-extrabold text-sm tracking-tight bg-gradient-to-r from-pink-400 to-indigo-300 bg-clip-text text-transparent hidden sm:inline">
+              Cheer
+            </span>
+          </div>
+
+          {/* STUDIO切替 Framed Container enclosing 3 Mode Buttons with Clear Boundaries */}
+          <div className="flex items-stretch border border-slate-700 rounded-xl overflow-hidden bg-slate-950/80 shadow-sm">
           {/* Label inside the frame */}
           <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 text-indigo-300 font-bold text-xs tracking-wider border-r border-slate-700 select-none">
             <ArrowRightLeft className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
@@ -158,6 +176,7 @@ export const RoleNavigationHeader: React.FC<RoleNavigationHeaderProps> = ({
             </button>
           </div>
         </div>
+      </div>
 
         {/* Right: Vertical Sync Stack, User Profile & Logout */}
         <div className="flex items-center gap-3 w-full md:w-auto justify-end text-[11px]">
