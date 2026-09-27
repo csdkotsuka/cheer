@@ -11,16 +11,18 @@ import {
 
 interface MyLoungeGuidePageProps {
   onBackToApp?: () => void;
+  appIconUrl?: string;
 }
 
-export const MyLoungeGuidePage: React.FC<MyLoungeGuidePageProps> = ({ onBackToApp }) => {
+export const MyLoungeGuidePage: React.FC<MyLoungeGuidePageProps> = ({ onBackToApp, appIconUrl }) => {
+  const iconSrc = appIconUrl || '/cheer_icon.png';
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FFF5F7] via-[#FFF9FA] to-[#F2F6FC] text-slate-800 font-sans pb-24">
       {/* Top sticky nav */}
       <header className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-pink-100 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-xs">
         <div className="flex items-center gap-2.5">
           <img
-            src="/cheer_icon.png"
+            src={iconSrc}
             alt="Cheer"
             className="w-8 h-8 rounded-xl object-cover shadow-sm border border-pink-200"
           />
@@ -363,7 +365,7 @@ export const MyLoungeGuidePage: React.FC<MyLoungeGuidePageProps> = ({ onBackToAp
           <div className="pt-2 flex items-center justify-center">
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-2xl bg-white border border-pink-200 shadow-sm">
               <img
-                src="/cheer_icon.png"
+                src={iconSrc}
                 alt="Cheer"
                 className="w-10 h-10 rounded-xl object-cover shadow-xs border border-pink-100"
               />

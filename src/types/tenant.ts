@@ -145,6 +145,8 @@ export interface Tenant {
   headerTitle: string;        // 顧客ページの見出し (例: 'HISA-CARAT Log', 'POWER-FIT Gym', 'STEP 学習手帳')
   headerSubtitle: string;     // 顧客ページのサブ見出し
   badgeText: string;          // ヘッダー上のバッジ (例: 'CARAT 💎 Care', 'FITNESS PRO 🔥', 'STUDY ACADEMY ✏️')
+  appIconUrl?: string;        // アプリアイコン・ブランドアイコンURL
+  faviconUrl?: string;        // ファビコンURL (未指定時はappIconUrlを使用)
   theme: ColorTheme;
   aiPersona: AIPersonaConfig;
   dailyConfig: DailyConfig;

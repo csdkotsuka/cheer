@@ -385,3 +385,23 @@ export const deleteGenericEvalRecord = (
   saveGenericEvalRecords(customerId, updated);
   return updated;
 };
+
+// Platform Master Icon Storage
+const PLATFORM_MASTER_ICON_KEY = 'cheer_platform_master_icon';
+
+export const getPlatformMasterIcon = (): string => {
+  try {
+    return localStorage.getItem(PLATFORM_MASTER_ICON_KEY) || '/cheer_icons/cheer_original.png';
+  } catch {
+    return '/cheer_icons/cheer_original.png';
+  }
+};
+
+export const savePlatformMasterIcon = (url: string): void => {
+  try {
+    localStorage.setItem(PLATFORM_MASTER_ICON_KEY, url);
+  } catch (e) {
+    console.error('Failed to save platform master icon', e);
+  }
+};
+

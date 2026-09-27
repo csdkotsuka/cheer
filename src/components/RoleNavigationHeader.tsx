@@ -26,6 +26,7 @@ interface RoleNavigationHeaderProps {
 export const RoleNavigationHeader: React.FC<RoleNavigationHeaderProps> = ({
   currentMode,
   onSwitchMode,
+  activeTenant,
   activeCustomer: _activeCustomer,
   currentUser,
   onOpenLoginModal,
@@ -46,7 +47,7 @@ export const RoleNavigationHeader: React.FC<RoleNavigationHeaderProps> = ({
           {/* Left: App Logo & User space name */}
           <div className="flex items-center gap-2">
             <img
-              src="/cheer_icon.png"
+              src={activeTenant.appIconUrl || '/cheer_icon.png'}
               alt="Cheer"
               className="w-5 h-5 rounded-md object-cover shadow-xs border border-white/20"
             />
@@ -109,7 +110,7 @@ export const RoleNavigationHeader: React.FC<RoleNavigationHeaderProps> = ({
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <img
-              src="/cheer_icon.png"
+              src={activeTenant.appIconUrl || '/cheer_icon.png'}
               alt="Cheer"
               className="w-5 h-5 rounded-md object-cover shadow-xs border border-white/20"
             />

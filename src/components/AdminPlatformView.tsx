@@ -36,6 +36,9 @@ import {
   saveGeminiModel,
   testGeminiConnection,
 } from '../utils/geminiChat';
+import { CheerIconSelector } from './CheerIconSelector';
+import { getPlatformMasterIcon, savePlatformMasterIcon } from '../utils/tenantStorage';
+import { updateFavicon } from '../utils/favicon';
 
 interface AdminPlatformViewProps {
   tenants: Tenant[];
@@ -47,6 +50,8 @@ interface AdminPlatformViewProps {
   activeTenantId: string;
   onOpenPrPartnerPage?: () => void;
   onOpenMyLoungeGuidePage?: () => void;
+  platformIcon?: string;
+  onUpdatePlatformIcon?: (url: string) => void;
 }
 
 export const AdminPlatformView: React.FC<AdminPlatformViewProps> = ({
@@ -57,7 +62,24 @@ export const AdminPlatformView: React.FC<AdminPlatformViewProps> = ({
   onOpenCustomerPage,
   onCreateTenant,
   activeTenantId,
+  onOpenPrPartnerPage: _onOpenPrPartnerPage,
+  onOpenMyLoungeGuidePage: _onOpenMyLoungeGuidePage,
+  platformIcon: propPlatformIcon,
+  onUpdatePlatformIcon,
 }) => {
+  const [platformIcon, setPlatformIcon] = useState<string>(
+    () => propPlatformIcon || getPlatformMasterIcon()
+  );
+
+  const handleSelectPlatformIcon = (iconUrl: string, favUrl: string) => {
+    setPlatformIcon(iconUrl);
+    savePlatformMasterIcon(iconUrl);
+    updateFavicon(favUrl);
+    if (onUpdatePlatformIcon) {
+      onUpdatePlatformIcon(iconUrl);
+    }
+  };
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndustry, setSelectedIndustry] = useState<string>('all');
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -239,7 +261,7 @@ export const AdminPlatformView: React.FC<AdminPlatformViewProps> = ({
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-start sm:items-center gap-4">
             <img
-              src="/cheer_icon.png"
+              src={platformIcon || '/cheer_icon.png'}
               alt="Cheer Master"
               className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shadow-xl border-2 border-indigo-400/40 shrink-0 bg-white"
             />
@@ -423,6 +445,17 @@ export const AdminPlatformView: React.FC<AdminPlatformViewProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Platform Master Icon & Favicon Configuration */}
+      <CheerIconSelector
+        selectedIconUrl={platformIcon}
+        onSelectIcon={handleSelectPlatformIcon}
+        title="Cheer Master アプリアイコン・ファビコン統合切替"
+        description="Provided fileの8種類のバリエーションから、システム全体のマスターアイコンや共通ファビコン（ブラウザタブアイコン）を選択・即時適用できます。"
+        badgeLabel="Cheer Master 管理"
+        variant="admin"
+        appNamePreview="Cheer Master"
+      />
 
       {/* Gemini AI Platform Configuration */}
       <div className="rounded-3xl p-6 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white shadow-lg border border-indigo-800/40 space-y-4">

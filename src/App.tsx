@@ -30,7 +30,9 @@ import {
   saveGenericDailyLogs,
   getGenericEvalRecords,
   saveGenericEvalRecords,
+  getPlatformMasterIcon,
 } from './utils/tenantStorage';
+import { updateFavicon } from './utils/favicon';
 import {
   getDailyLogs,
   saveDailyLogs,
@@ -691,13 +693,34 @@ export const App: React.FC = () => {
     ? 'provider'
     : appMode;
 
+  // Platform Master Icon and Dynamic Favicon management
+  const [platformIcon, setPlatformIcon] = useState<string>(() => getPlatformMasterIcon());
+
+  useEffect(() => {
+    // When in My Lounge (customer mode), prioritize tenant's favicon / app icon
+    if (effectiveMode === 'customer') {
+      const fav = activeTenant?.faviconUrl || activeTenant?.appIconUrl || platformIcon || '/cheer_icon.png';
+      updateFavicon(fav);
+    } else if (effectiveMode === 'provider') {
+      const fav = activeTenant?.faviconUrl || activeTenant?.appIconUrl || platformIcon || '/cheer_icon.png';
+      updateFavicon(fav);
+    } else {
+      updateFavicon(platformIcon || '/cheer_icon.png');
+    }
+  }, [effectiveMode, activeTenant?.faviconUrl, activeTenant?.appIconUrl, platformIcon]);
+
   // Render Subpage (PR landing or User Guide) if requested
   if (subPage === 'pr-partner') {
     return <ProPartnerLandingPage onBackToAdmin={() => setSubPage('none')} />;
   }
 
   if (subPage === 'guide-lounge') {
-    return <MyLoungeGuidePage onBackToApp={() => setSubPage('none')} />;
+    return (
+      <MyLoungeGuidePage
+        onBackToApp={() => setSubPage('none')}
+        appIconUrl={activeTenant?.appIconUrl || platformIcon}
+      />
+    );
   }
 
   return (
@@ -741,6 +764,8 @@ export const App: React.FC = () => {
             activeTenantId={activeTenantId}
             onOpenPrPartnerPage={() => setSubPage('pr-partner')}
             onOpenMyLoungeGuidePage={() => setSubPage('guide-lounge')}
+            platformIcon={platformIcon}
+            onUpdatePlatformIcon={setPlatformIcon}
           />
         </div>
       )}

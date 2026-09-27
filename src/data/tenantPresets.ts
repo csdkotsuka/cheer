@@ -183,6 +183,8 @@ export const INITIAL_TENANTS: Tenant[] = [
     headerTitle: 'HISA-CARAT Log',
     headerSubtitle: 'ひさこのEGPAリハビリ＆セルフケア手帳（受診・定期測定共有対応）',
     badgeText: 'CARAT 💎 EGPA Care',
+    appIconUrl: '/cheer_icons/cheer_original.png',
+    faviconUrl: '/cheer_icons/cheer_original_favicon.png',
     theme: COLOR_THEMES[0],
     aiPersona: {
       name: 'ジョンハン (SEVENTEEN)',
@@ -269,6 +271,8 @@ export const INITIAL_TENANTS: Tenant[] = [
     headerTitle: 'NEXT-FITNESS トレーニングLog',
     headerSubtitle: '理想の身体をつくる！毎日の食事・筋トレ＆トレーナー伴走ノート',
     badgeText: 'FITNESS PRO 🔥',
+    appIconUrl: '/cheer_icons/cheer_variant_2.png',
+    faviconUrl: '/cheer_icons/cheer_variant_2_favicon.png',
     theme: COLOR_THEMES[1],
     aiPersona: {
       name: 'KENJIコーチ',
@@ -348,6 +352,8 @@ export const INITIAL_TENANTS: Tenant[] = [
     headerTitle: 'MIRAI Study Note',
     headerSubtitle: '志望校合格への確かな一歩！毎日の自習習慣＆先生のアドバイス手帳',
     badgeText: 'STUDY ACADEMY ✏️',
+    appIconUrl: '/cheer_icons/cheer_variant_3.png',
+    faviconUrl: '/cheer_icons/cheer_variant_3_favicon.png',
     theme: COLOR_THEMES[2],
     aiPersona: {
       name: '美咲先生',
@@ -424,6 +430,8 @@ export const INITIAL_TENANTS: Tenant[] = [
     headerTitle: 'あおぞら ウォーキングLog',
     headerSubtitle: 'みんなで楽しく毎日歩いて健康寿命を延ばそう！仲間とつながる習慣ノート',
     badgeText: 'WALK & HEALTH 👟',
+    appIconUrl: '/cheer_icons/cheer_variant_6.png',
+    faviconUrl: '/cheer_icons/cheer_variant_6_favicon.png',
     theme: COLOR_THEMES[3],
     aiPersona: {
       name: 'あるく君',

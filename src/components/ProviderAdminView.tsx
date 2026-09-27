@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import type { Tenant, Customer, ColorTheme, AIPersonaQuote, GenericDailyLog, GenericEvalRecord, LoungeLinkItem } from '../types/tenant';
 import { COLOR_THEMES, DEFAULT_CARAT_LOUNGE_LINKS } from '../data/tenantPresets';
+import { CheerIconSelector } from './CheerIconSelector';
 import { triggerSparkleConfetti } from '../utils/confetti';
 import {
   getGenericDailyLogs,
@@ -358,9 +359,19 @@ export const ProviderAdminView: React.FC<ProviderAdminViewProps> = ({
       <div className="glass-card rounded-3xl p-6 bg-gradient-to-r from-amber-50 via-white to-amber-50/60 border border-amber-200/80 shadow-sm relative overflow-hidden">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
-            <div className="w-14 h-14 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-2xl shadow-md flex-shrink-0">
-              🏢
-            </div>
+            {currentTenant.appIconUrl ? (
+              <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-md border-2 border-amber-300 flex-shrink-0 bg-white p-0.5">
+                <img
+                  src={currentTenant.appIconUrl}
+                  alt={currentTenant.name}
+                  className="w-full h-full object-cover rounded-xl"
+                />
+              </div>
+            ) : (
+              <div className="w-14 h-14 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-2xl shadow-md flex-shrink-0">
+                🏢
+              </div>
+            )}
             <div>
               <div className="flex items-center gap-2">
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-amber-100 text-amber-900 border border-amber-300">
@@ -592,6 +603,23 @@ export const ProviderAdminView: React.FC<ProviderAdminViewProps> = ({
               </div>
             </div>
           </div>
+
+          {/* App Icon & Favicon Selector */}
+          <CheerIconSelector
+            selectedIconUrl={currentTenant.appIconUrl || ''}
+            onSelectIcon={(iconUrl, favUrl) => {
+              setCurrentTenant((prev) => ({
+                ...prev,
+                appIconUrl: iconUrl,
+                faviconUrl: favUrl,
+              }));
+            }}
+            title={`${currentTenant.name} アプリアイコン＆ファビコン切替`}
+            description="顧客画面（My Lounge）、ホーム画面追加時のアイコン、およびブラウザタブのファビコンに適用するアイコンを選択します。"
+            badgeLabel={`Pro Partner: ${currentTenant.name}`}
+            variant="provider"
+            appNamePreview={currentTenant.headerTitle || currentTenant.name}
+          />
 
           {/* Color Theme Selector (10 Presets + Custom) */}
           <div className="glass-card rounded-3xl p-6 bg-white border border-slate-200 space-y-5">

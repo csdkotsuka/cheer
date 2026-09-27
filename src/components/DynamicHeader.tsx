@@ -138,6 +138,13 @@ export const DynamicHeader: React.FC<DynamicHeaderProps> = ({
 
             <div>
               <div className="flex items-center gap-2 flex-wrap">
+                {tenant.appIconUrl && (
+                  <img
+                    src={tenant.appIconUrl}
+                    alt="App Icon"
+                    className="w-5 h-5 rounded-md object-cover shadow-xs border border-white/60 bg-white"
+                  />
+                )}
                 <span
                   className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider text-white shadow-xs"
                   style={{
