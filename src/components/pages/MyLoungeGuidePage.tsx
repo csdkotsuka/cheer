@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Heart,
   CheckCircle2,
@@ -7,14 +6,20 @@ import {
   Smartphone,
   Sparkles,
   ArrowLeft,
+  LogIn,
 } from 'lucide-react';
 
 interface MyLoungeGuidePageProps {
   onBackToApp?: () => void;
+  onOpenLogin?: () => void;
   appIconUrl?: string;
 }
 
-export const MyLoungeGuidePage: React.FC<MyLoungeGuidePageProps> = ({ onBackToApp, appIconUrl }) => {
+export const MyLoungeGuidePage: React.FC<MyLoungeGuidePageProps> = ({
+  onBackToApp,
+  onOpenLogin,
+  appIconUrl,
+}) => {
   const iconSrc = appIconUrl || '/cheer_icon.png';
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FFF5F7] via-[#FFF9FA] to-[#F2F6FC] text-slate-800 font-sans pb-24">
@@ -36,15 +41,27 @@ export const MyLoungeGuidePage: React.FC<MyLoungeGuidePageProps> = ({ onBackToAp
           </div>
         </div>
 
-        {onBackToApp && (
-          <button
-            onClick={onBackToApp}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold shadow-sm hover:bg-slate-800 transition-all cursor-pointer"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>アプリに戻る</span>
-          </button>
-        )}
+        <div className="flex items-center gap-2">
+          {onOpenLogin && (
+            <button
+              onClick={onOpenLogin}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white text-xs font-extrabold shadow-sm transition-all cursor-pointer"
+            >
+              <LogIn className="w-3.5 h-3.5" />
+              <span>ログイン / 新規登録</span>
+            </button>
+          )}
+
+          {onBackToApp && (
+            <button
+              onClick={onBackToApp}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold shadow-sm hover:bg-slate-800 transition-all cursor-pointer"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>アプリに戻る</span>
+            </button>
+          )}
+        </div>
       </header>
 
       {/* Hero Section */}
@@ -457,6 +474,36 @@ export const MyLoungeGuidePage: React.FC<MyLoungeGuidePageProps> = ({ onBackToAp
             <span className="text-emerald-600 font-bold">✓</span>
             <span>オフライン・電波微弱時も安心</span>
           </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="max-w-3xl mx-auto px-4 pt-6 text-center space-y-4">
+        <div className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 rounded-3xl p-8 text-white space-y-5 shadow-lg flex flex-col items-center">
+          <img
+            src={iconSrc}
+            alt="Cheer"
+            className="w-12 h-12 rounded-2xl object-cover border-2 border-white/40 shadow-md"
+          />
+          <h3 className="text-xl sm:text-2xl font-black">
+            今日から、あなたの「できた」を重ねよう。
+          </h3>
+          <p className="text-xs sm:text-sm text-white/90 max-w-lg mx-auto leading-relaxed">
+            登録はメールアドレスとお名前を入れるだけ（無料・30秒）。お好みのログスタイルを選んで、あなただけの温かなマイラウンジをはじめませんか？
+          </p>
+
+          {onOpenLogin && (
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                type="button"
+                onClick={onOpenLogin}
+                className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-white text-slate-900 hover:bg-slate-100 text-xs sm:text-sm font-extrabold shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer hover:scale-105 active:scale-95"
+              >
+                <LogIn className="w-4 h-4 text-pink-600" />
+                <span>ログイン / 新規登録画面を開く ✨</span>
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </div>

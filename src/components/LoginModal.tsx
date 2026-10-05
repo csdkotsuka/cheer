@@ -28,6 +28,7 @@ interface LoginModalProps {
   onLogin: (user: AuthUser) => void;
   currentUser: AuthUser | null;
   onRegisterConsumer?: (result: { user: AuthUser; tenant: Tenant; customer: Customer }) => void;
+  initialTab?: 'quick' | 'email' | 'register';
 }
 
 export const LoginModal: React.FC<LoginModalProps> = ({
@@ -36,10 +37,17 @@ export const LoginModal: React.FC<LoginModalProps> = ({
   onLogin,
   currentUser,
   onRegisterConsumer,
+  initialTab,
 }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [activeTab, setActiveTab] = useState<'quick' | 'email' | 'register'>('quick');
+  const [activeTab, setActiveTab] = useState<'quick' | 'email' | 'register'>(initialTab || 'quick');
+
+  React.useEffect(() => {
+    if (isOpen && initialTab) {
+      setActiveTab(initialTab);
+    }
+  }, [isOpen, initialTab]);
   const [isVerifying, setIsVerifying] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [multipleCandidates, setMultipleCandidates] = useState<AuthUser[] | null>(null);

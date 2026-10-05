@@ -7,15 +7,18 @@ import {
   Palette,
   Sliders,
   Zap,
+  LogIn,
 } from 'lucide-react';
 import { getCurrentUser } from '../../utils/authStorage';
 
 interface ProPartnerLandingPageProps {
   onBackToAdmin: () => void;
+  onOpenLogin?: () => void;
 }
 
 export const ProPartnerLandingPage: React.FC<ProPartnerLandingPageProps> = ({
   onBackToAdmin,
+  onOpenLogin,
 }) => {
   const [selectedMockTheme, setSelectedMockTheme] = useState<'idol' | 'fitness' | 'education'>('idol');
   const user = getCurrentUser();
@@ -41,13 +44,25 @@ export const ProPartnerLandingPage: React.FC<ProPartnerLandingPageProps> = ({
           </div>
         </div>
 
-        <button
-          onClick={onBackToAdmin}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold shadow-sm hover:bg-slate-800 transition-all cursor-pointer"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>{isAdmin ? 'Master Consoleに戻る' : 'トップに戻る'}</span>
-        </button>
+        <div className="flex items-center gap-2">
+          {onOpenLogin && (
+            <button
+              onClick={onOpenLogin}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-xs font-extrabold shadow-sm transition-all cursor-pointer"
+            >
+              <LogIn className="w-3.5 h-3.5" />
+              <span>ログインページへ</span>
+            </button>
+          )}
+
+          <button
+            onClick={onBackToAdmin}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold shadow-sm hover:bg-slate-800 transition-all cursor-pointer"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>{isAdmin ? 'Master Consoleに戻る' : 'トップに戻る'}</span>
+          </button>
+        </div>
       </header>
 
       {/* Hero Section */}
@@ -656,7 +671,7 @@ export const ProPartnerLandingPage: React.FC<ProPartnerLandingPageProps> = ({
 
       {/* Bottom CTA */}
       <section className="max-w-3xl mx-auto px-4 pt-6 text-center space-y-4">
-        <div className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 rounded-3xl p-8 text-white space-y-4 shadow-lg flex flex-col items-center">
+        <div className="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 rounded-3xl p-8 text-white space-y-5 shadow-lg flex flex-col items-center">
           <img
             src="/cheer_icon.png"
             alt="Cheer"
@@ -668,6 +683,22 @@ export const ProPartnerLandingPage: React.FC<ProPartnerLandingPageProps> = ({
           <p className="text-xs sm:text-sm text-white/90 max-w-lg mx-auto leading-relaxed">
             Cheerは、専門職・事業者の皆さまと大切な顧客をつなぐ伴走プラットフォームです。日々の記録を通じて、信頼と成果を育みましょう。
           </p>
+
+          {onOpenLogin && (
+            <div className="pt-2 flex flex-col items-center gap-2">
+              <button
+                type="button"
+                onClick={onOpenLogin}
+                className="px-6 py-3 rounded-2xl bg-white text-slate-900 hover:bg-slate-100 text-xs sm:text-sm font-extrabold shadow-md flex items-center gap-2 transition-all cursor-pointer hover:scale-105 active:scale-95"
+              >
+                <LogIn className="w-4 h-4 text-amber-600" />
+                <span>Pro Partner ログイン画面を開く</span>
+              </button>
+              <p className="text-[11px] text-white/80">
+                ※ 事業者アカウントは事前登録制です。発行されたメールアドレスでログインしてください。
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </div>

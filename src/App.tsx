@@ -69,6 +69,7 @@ export const App: React.FC = () => {
   // Current Authenticated User
   const [currentUser, setCurrentUserState] = useState<AuthUser | null>(getCurrentUser());
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(() => !getCurrentUser());
+  const [loginModalInitialTab, setLoginModalInitialTab] = useState<'quick' | 'email' | 'register'>('quick');
   const [isPasswordChangeModalOpen, setIsPasswordChangeModalOpen] = useState(false);
 
   // Subpage for PR/Guides: 'none' | 'pr-partner' | 'guide-lounge'
@@ -711,15 +712,47 @@ export const App: React.FC = () => {
 
   // Render Subpage (PR landing or User Guide) if requested
   if (subPage === 'pr-partner') {
-    return <ProPartnerLandingPage onBackToAdmin={() => setSubPage('none')} />;
+    return (
+      <>
+        <ProPartnerLandingPage
+          onBackToAdmin={() => setSubPage('none')}
+          onOpenLogin={() => {
+            setLoginModalInitialTab('email');
+            setIsLoginModalOpen(true);
+          }}
+        />
+        <LoginModal
+          isOpen={isLoginModalOpen}
+          onClose={() => setIsLoginModalOpen(false)}
+          onLogin={handleLogin}
+          currentUser={currentUser}
+          onRegisterConsumer={handleRegisterConsumer}
+          initialTab={loginModalInitialTab}
+        />
+      </>
+    );
   }
 
   if (subPage === 'guide-lounge') {
     return (
-      <MyLoungeGuidePage
-        onBackToApp={() => setSubPage('none')}
-        appIconUrl={activeTenant?.appIconUrl || platformIcon}
-      />
+      <>
+        <MyLoungeGuidePage
+          onBackToApp={() => setSubPage('none')}
+          onOpenLogin={() => {
+            setLoginModalInitialTab('email');
+            setIsLoginModalOpen(true);
+          }}
+          appIconUrl={activeTenant?.appIconUrl || platformIcon}
+        />
+        <LoginModal
+          isOpen={isLoginModalOpen}
+          onClose={() => setIsLoginModalOpen(false)}
+          onLogin={handleLogin}
+          currentUser={currentUser}
+          onRegisterConsumer={handleRegisterConsumer}
+          initialTab={loginModalInitialTab}
+        />
+      </>
     );
   }
 
@@ -814,6 +847,7 @@ export const App: React.FC = () => {
         onLogin={handleLogin}
         currentUser={currentUser}
         onRegisterConsumer={handleRegisterConsumer}
+        initialTab={loginModalInitialTab}
       />
 
       {/* 4. My Page & Password Modal */}
